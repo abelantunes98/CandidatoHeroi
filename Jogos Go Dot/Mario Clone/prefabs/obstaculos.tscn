@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://imagens/lixeira.png" type="Texture" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 10 )
+
+[node name="obstaculos" type="Node2D"]
+
+[node name="lixeira" type="Sprite" parent="." index="0"]
+
+position = Vector2( 224.604, 330.61 )
+scale = Vector2( 0.0597943, 0.0591676 )
+texture = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="lixeira" index="0"]
+
+position = Vector2( -0.150549, 23.6776 )
+scale = Vector2( 22.7258, 35.1141 )
+shape = SubResource( 1 )
+
+

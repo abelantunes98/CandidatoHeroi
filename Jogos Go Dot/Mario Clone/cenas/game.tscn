@@ -1,0 +1,171 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://imagens/98579b139ed9018.jpg" type="Texture" id=1]
+[ext_resource path="res://imagens/Chao.png" type="Texture" id=2]
+[ext_resource path="res://fonts/nokian.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://prefabs/mario.tscn" type="PackedScene" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+
+size = 50
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 3 )
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 10 )
+
+[sub_resource type="ShaderMaterial" id=3]
+
+render_priority = 0
+
+[sub_resource type="RectangleShape2D" id=4]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 10 )
+_sections_unfolded = [ "Resource" ]
+
+[node name="game" type="Node2D" index="0"]
+
+[node name="backgroundAnda" type="ParallaxBackground" parent="." index="0"]
+
+layer = -2
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+scroll_offset = Vector2( 0, 0 )
+scroll_base_offset = Vector2( 0, 0 )
+scroll_base_scale = Vector2( 1, 1 )
+scroll_limit_begin = Vector2( 0, 0 )
+scroll_limit_end = Vector2( 0, 0 )
+scroll_ignore_camera_zoom = true
+_sections_unfolded = [ "Scroll" ]
+
+[node name="parallaxLayer" type="ParallaxLayer" parent="backgroundAnda" index="0"]
+
+motion_scale = Vector2( 1, 1 )
+motion_offset = Vector2( 0, 0 )
+motion_mirroring = Vector2( 1120, 0 )
+_sections_unfolded = [ "Motion" ]
+
+[node name="background" type="Sprite" parent="backgroundAnda/parallaxLayer" index="0"]
+
+position = Vector2( 4.54413, -15.9045 )
+scale = Vector2( 1.4, 1.4 )
+texture = ExtResource( 1 )
+centered = false
+_sections_unfolded = [ "Animation", "Offset", "Transform" ]
+
+[node name="groundParallax" type="ParallaxBackground" parent="." index="1"]
+
+layer = -1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+scroll_offset = Vector2( 0, 0 )
+scroll_base_offset = Vector2( 0, 0 )
+scroll_base_scale = Vector2( 1, 1 )
+scroll_limit_begin = Vector2( 0, 0 )
+scroll_limit_end = Vector2( 0, 0 )
+scroll_ignore_camera_zoom = true
+
+[node name="parallaxLayer" type="ParallaxLayer" parent="groundParallax" index="0"]
+
+motion_scale = Vector2( 1, 1 )
+motion_offset = Vector2( 0, 0 )
+motion_mirroring = Vector2( 718.4, 0 )
+_sections_unfolded = [ "Motion" ]
+
+[node name="ground" type="Sprite" parent="groundParallax/parallaxLayer" index="0"]
+
+position = Vector2( 0.860901, 313.913 )
+scale = Vector2( 1.6, 1.4 )
+texture = ExtResource( 2 )
+centered = false
+_sections_unfolded = [ "Animation", "Material", "Offset", "Pause", "Region", "Transform", "Visibility" ]
+
+[node name="hud" type="CanvasLayer" parent="." index="2"]
+
+layer = 1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+
+[node name="score" type="Label" parent="hud" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 588.0
+margin_top = 11.0
+margin_right = 628.0
+margin_bottom = 78.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "0"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Material", "Visibility", "custom_colors", "custom_fonts" ]
+
+[node name="limites" type="StaticBody2D" parent="." index="3"]
+
+position = Vector2( 320.534, 334.625 )
+scale = Vector2( 9.95164, 0.696308 )
+input_pickable = false
+collision_layer = 31
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+_sections_unfolded = [ "Collision" ]
+
+[node name="ceu" type="CollisionShape2D" parent="limites" index="0"]
+
+position = Vector2( -1.74315, -501.372 )
+scale = Vector2( 3.28781, 3.09988 )
+z_as_relative = false
+shape = SubResource( 2 )
+_sections_unfolded = [ "Visibility", "Z Index" ]
+
+[node name="chao" type="CollisionShape2D" parent="limites" index="1"]
+
+pause_mode = 2
+material = SubResource( 3 )
+position = Vector2( 244.491, 0.450806 )
+scale = Vector2( 27.7081, 2.93911 )
+z_as_relative = false
+shape = SubResource( 4 )
+_sections_unfolded = [ "Material", "Pause", "Transform", "Visibility", "Z Index" ]
+
+[node name="obstaculos" type="Node2D" parent="." index="4"]
+
+editor/display_folded = true
+
+[node name="Timer" type="Timer" parent="obstaculos" index="0"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = false
+
+[node name="mario" parent="." index="5" instance=ExtResource( 4 )]
+
+position = Vector2( 159.943, 56.2767 )
+collision_layer = 1
+can_sleep = false
+
+

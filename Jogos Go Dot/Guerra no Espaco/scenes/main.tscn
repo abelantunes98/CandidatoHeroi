@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/nave.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scripts/nave.gd" type="Script" id=2]
+
+[node name="main" type="Node" index="0"]
+
+[node name="nave" parent="." index="0" instance=ExtResource( 1 )]
+
+position = Vector2( 446.46, 429.615 )
+script = ExtResource( 2 )
+
+

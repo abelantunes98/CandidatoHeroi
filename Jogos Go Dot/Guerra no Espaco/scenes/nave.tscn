@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://sprites/nave.png" type="Texture" id=1]
+
+[node name="nave" type="Node2D"]
+
+[node name="corpo" type="Sprite" parent="." index="0"]
+
+position = Vector2( -6.60263, 1.20348 )
+scale = Vector2( 1.01195, 1 )
+texture = ExtResource( 1 )
+_sections_unfolded = [ "Region", "Transform", "Visibility" ]
+
+
