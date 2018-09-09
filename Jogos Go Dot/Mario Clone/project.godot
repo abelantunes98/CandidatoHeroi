@@ -14,6 +14,10 @@ config/name="Mario Clone"
 run/main_scene="res://cenas/menu.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+saveData="*res://scripts/saveData.gd"
+
 [display]
 
 window/size/width=640

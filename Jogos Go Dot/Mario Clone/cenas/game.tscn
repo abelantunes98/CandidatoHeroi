@@ -1,16 +1,19 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://imagens/98579b139ed9018.jpg" type="Texture" id=1]
-[ext_resource path="res://imagens/Chao.png" type="Texture" id=2]
-[ext_resource path="res://fonts/nokian.ttf" type="DynamicFontData" id=3]
-[ext_resource path="res://prefabs/mario.tscn" type="PackedScene" id=4]
+[ext_resource path="res://cenas/game.gd" type="Script" id=1]
+[ext_resource path="res://scripts/backgroundAnda.gd" type="Script" id=2]
+[ext_resource path="res://imagens/98579b139ed9018.jpg" type="Texture" id=3]
+[ext_resource path="res://imagens/Chao.png" type="Texture" id=4]
+[ext_resource path="res://fonts/nokian.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://prefabs/mario.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scripts/obstaculos2.gd" type="Script" id=7]
 
 [sub_resource type="DynamicFont" id=1]
 
 size = 50
 use_mipmaps = false
 use_filter = false
-font_data = ExtResource( 3 )
+font_data = ExtResource( 5 )
 
 [sub_resource type="RectangleShape2D" id=2]
 
@@ -27,7 +30,9 @@ custom_solver_bias = 0.0
 extents = Vector2( 10, 10 )
 _sections_unfolded = [ "Resource" ]
 
-[node name="game" type="Node2D" index="0"]
+[node name="game" type="Node2D"]
+
+script = ExtResource( 1 )
 
 [node name="backgroundAnda" type="ParallaxBackground" parent="." index="0"]
 
@@ -42,7 +47,9 @@ scroll_base_scale = Vector2( 1, 1 )
 scroll_limit_begin = Vector2( 0, 0 )
 scroll_limit_end = Vector2( 0, 0 )
 scroll_ignore_camera_zoom = true
+script = ExtResource( 2 )
 _sections_unfolded = [ "Scroll" ]
+speed = 100
 
 [node name="parallaxLayer" type="ParallaxLayer" parent="backgroundAnda" index="0"]
 
@@ -53,9 +60,9 @@ _sections_unfolded = [ "Motion" ]
 
 [node name="background" type="Sprite" parent="backgroundAnda/parallaxLayer" index="0"]
 
-position = Vector2( 4.54413, -15.9045 )
+position = Vector2( 3.54413, -16.9045 )
 scale = Vector2( 1.4, 1.4 )
-texture = ExtResource( 1 )
+texture = ExtResource( 3 )
 centered = false
 _sections_unfolded = [ "Animation", "Offset", "Transform" ]
 
@@ -72,6 +79,8 @@ scroll_base_scale = Vector2( 1, 1 )
 scroll_limit_begin = Vector2( 0, 0 )
 scroll_limit_end = Vector2( 0, 0 )
 scroll_ignore_camera_zoom = true
+script = ExtResource( 2 )
+speed = 200
 
 [node name="parallaxLayer" type="ParallaxLayer" parent="groundParallax" index="0"]
 
@@ -84,7 +93,7 @@ _sections_unfolded = [ "Motion" ]
 
 position = Vector2( 0.860901, 313.913 )
 scale = Vector2( 1.6, 1.4 )
-texture = ExtResource( 2 )
+texture = ExtResource( 4 )
 centered = false
 _sections_unfolded = [ "Animation", "Material", "Offset", "Pause", "Region", "Transform", "Visibility" ]
 
@@ -151,21 +160,22 @@ z_as_relative = false
 shape = SubResource( 4 )
 _sections_unfolded = [ "Material", "Pause", "Transform", "Visibility", "Z Index" ]
 
-[node name="obstaculos" type="Node2D" parent="." index="4"]
+[node name="mario" parent="." index="4" instance=ExtResource( 6 )]
 
-editor/display_folded = true
+position = Vector2( 124, 57 )
+gravity_scale = 10.0
+
+[node name="obstaculos" type="Node2D" parent="." index="5"]
+
+script = ExtResource( 7 )
 
 [node name="Timer" type="Timer" parent="obstaculos" index="0"]
 
 process_mode = 1
-wait_time = 1.0
+wait_time = 3.0
 one_shot = false
-autostart = false
+autostart = true
 
-[node name="mario" parent="." index="5" instance=ExtResource( 4 )]
-
-position = Vector2( 159.943, 56.2767 )
-collision_layer = 1
-can_sleep = false
+[connection signal="timeout" from="obstaculos/Timer" to="obstaculos" method="_on_Timer_timeout"]
 
 
