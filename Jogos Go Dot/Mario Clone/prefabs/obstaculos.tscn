@@ -11,7 +11,7 @@ extents = Vector2( 10, 10 )
 [sub_resource type="RectangleShape2D" id=2]
 
 custom_solver_bias = 0.0
-extents = Vector2( 22.6364, 10 )
+extents = Vector2( 22.6364, 69.4357 )
 
 [node name="obstaculos" type="Node2D"]
 
@@ -20,6 +20,7 @@ scale = Vector2( 1.06023, 0.992808 )
 z_as_relative = false
 script = ExtResource( 1 )
 _sections_unfolded = [ "Material", "Transform", "Visibility", "Z Index" ]
+speed = 0
 
 [node name="lixeira" type="Sprite" parent="." index="0"]
 
@@ -58,8 +59,8 @@ audio_bus_name = "Master"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaScore" index="0"]
 
-position = Vector2( 70.0034, 18.4093 )
-scale = Vector2( 1.73839, 1.82153 )
+position = Vector2( 34.5553, -135.219 )
+scale = Vector2( 2.4571, 1.82153 )
 shape = SubResource( 2 )
 _sections_unfolded = [ "Material", "Transform", "Visibility" ]
 

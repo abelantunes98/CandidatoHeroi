@@ -30,7 +30,7 @@ custom_solver_bias = 0.0
 extents = Vector2( 10, 10 )
 _sections_unfolded = [ "Resource" ]
 
-[node name="game" type="Node2D"]
+[node name="game" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 
@@ -111,9 +111,9 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 588.0
+margin_left = 562.0
 margin_top = 11.0
-margin_right = 628.0
+margin_right = 602.0
 margin_bottom = 78.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -172,10 +172,12 @@ script = ExtResource( 7 )
 [node name="Timer" type="Timer" parent="obstaculos" index="0"]
 
 process_mode = 1
-wait_time = 3.0
+wait_time = 1.5
 one_shot = false
 autostart = true
 
 [connection signal="timeout" from="obstaculos/Timer" to="obstaculos" method="_on_Timer_timeout"]
+
+[connection signal="timeout" from="obstaculos/Timer" to="." method="_on_Timer_timeout"]
 
 

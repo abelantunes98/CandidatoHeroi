@@ -1,7 +1,7 @@
 extends Node2D
 
 var game
-var speed = 200
+export var speed = 0
 
 func _ready():
 	game = get_tree().current_scene
@@ -16,7 +16,7 @@ func _process(delta):
 		if position.x < -100:
 			queue_free()
 		
-
+	
 func _on_Area2D_body_entered(body):
 	if game.state == game.game_state.PLAYING:
 		if body.name == "mario":
@@ -27,3 +27,4 @@ func _on_AreaScore_body_entered(body):
 	if game.state == game.game_state.PLAYING:
 		if body.name == "mario":
 			game.count_score()
+			game.aumentaVeloChao()
